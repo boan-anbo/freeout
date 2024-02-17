@@ -14,6 +14,10 @@ pub mod test_utils {
 
     pub fn get_temp_folder() -> PathBuf {
         let temp_folder = get_test_folder().join("temp");
+        // create temp folder if it does not exist
+        if !temp_folder.exists() {
+            std::fs::create_dir_all(&temp_folder).unwrap();
+        }
         temp_folder
     }
 

@@ -56,8 +56,6 @@ impl ReaderTrait for MarkdownReader {
     fn read(&self, source: &str, opt: &FreeoutOptions) -> Result<Blocks, Report> {
         let ast = markdown_to_ast(source)?;
 
-        debug!("ast: {:#?}", ast);
-
         let mut blocks = Blocks::new();
 
         fn attach_content_to_parent_block(parent_id: usize, content: String, blocks: &mut Blocks) {
